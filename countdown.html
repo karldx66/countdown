@@ -1,1 +1,58 @@
-<!DOCTYPE html><html lang="zh-CN"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>九队同学聚会倒计时</title>    <style>        body {            font-family: Arial, sans-serif;            text-align: center;            margin-top: 50px;            background-color: #f0f0f0;        }        #countdown {            font-size: 2em;            color: #333;        }    </style></head><body>    <h1>九队同学聚会倒计时</h1>    <p>距离2025年5月16日还有：</p>    <div id="countdown"></div>    <script>        // 设置聚会日期        const partyDate = new Date('2025-05-16T00:00:00');        function updateCountdown() {            const now = new Date();            const timeDifference = partyDate - now;            // 计算剩余的天数、小时、分钟和秒            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);            // 显示倒计时            document.getElementById('countdown').innerHTML =                 `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;            // 如果时间到了，停止倒计时            if (timeDifference <= 0) {                clearInterval(interval);                document.getElementById('countdown').innerHTML = "聚会时间到！";            }        }        // 每秒更新一次倒计时        const interval = setInterval(updateCountdown, 1000);        // 初始化倒计时        updateCountdown();    </script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九队聚会倒计时</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+        #countdown {
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>九队聚会倒计时</h1>
+    <p>距离2025年5月16日还有：</p>
+    <div id="countdown"></div>
+
+    <script>
+        // 设置聚会日期
+        const partyDate = new Date('2025-05-16T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = partyDate - now;
+
+            // 计算剩余的天数、小时、分钟和秒
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // 显示倒计时
+            document.getElementById('countdown').innerHTML = 
+                `${days} 天
+                ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+
+            // 如果时间到了，停止倒计时
+            if (timeDifference <= 0) {
+                clearInterval(interval);
+                document.getElementById('countdown').innerHTML = "聚会时间到！";
+            }
+        }
+
+        // 每秒更新一次倒计时
+        const interval = setInterval(updateCountdown, 1000);
+
+        // 初始化倒计时
+        updateCountdown();
+    </script>
+</body>
+</html>
