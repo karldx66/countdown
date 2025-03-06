@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -23,23 +23,23 @@
         .container {
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
             max-width: 90%;
-            width: 400px;
+            width: 100%;
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 20px;
             font-weight: bold;
         }
 
         p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+            font-size: 1em;
+            margin-bottom: 20px;
         }
 
         /* 倒计时样式 */
@@ -51,7 +51,7 @@
 
         .countdown-item {
             background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             flex: 1;
             text-align: center;
@@ -59,31 +59,36 @@
 
         .countdown-item span {
             display: block;
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
         }
 
         .countdown-item small {
-            font-size: 0.9em;
+            font-size: 0.8em;
             opacity: 0.8;
         }
 
         /* 响应式设计 */
-        @media (max-width: 480px) {
+        @media (min-width: 480px) {
+            .container {
+                padding: 40px;
+                width: 400px;
+            }
+
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
 
             p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
 
             .countdown-item span {
-                font-size: 1.5em;
+                font-size: 2em;
             }
 
             .countdown-item small {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
         }
     </style>
