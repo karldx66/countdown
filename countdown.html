@@ -3,24 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九队聚会倒计时</title>
+    <title>九队同学聚会倒计时</title>
     <style>
+        /* 全局样式 */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
+
+        /* 容器样式 */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 90%;
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* 倒计时样式 */
         #countdown {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .countdown-item span {
+            display: block;
             font-size: 2em;
-            color: #333;
+            font-weight: bold;
+        }
+
+        .countdown-item small {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .countdown-item span {
+                font-size: 1.5em;
+            }
+
+            .countdown-item small {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>九队聚会倒计时</h1>
-    <p>距离2025年5月16日还有：</p>
-    <div id="countdown"></div>
+    <div class="container">
+        <h1>九队同学聚会倒计时</h1>
+        <p>距离 2025 年 5 月 16 日还有：</p>
+        <div id="countdown">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <small>天</small>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <small>小时</small>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <small>分钟</small>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <small>秒</small>
+            </div>
+        </div>
+    </div>
 
     <script>
         // 设置聚会日期
@@ -36,15 +126,16 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            // 显示倒计时
-            document.getElementById('countdown').innerHTML = 
-                `${days} 天
-                ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+            // 更新倒计时显示
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
             // 如果时间到了，停止倒计时
             if (timeDifference <= 0) {
                 clearInterval(interval);
-                document.getElementById('countdown').innerHTML = "聚会时间到！";
+                document.getElementById('countdown').innerHTML = "<p style='font-size: 1.5em;'>聚会时间到！</p>";
             }
         }
 
